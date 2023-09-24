@@ -18,6 +18,7 @@ class CategoriesScreen extends StatelessWidget {
           Text("2",style: TextStyle(color: Colors.white)),
           Text("3",style: TextStyle(color: Colors.white)),
           Text("4",style: TextStyle(color: Colors.white)),
+          Text("5",style: TextStyle(color: Colors.white)),
         ],
       ),
     );
