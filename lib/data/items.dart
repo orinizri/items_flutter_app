@@ -1,7 +1,7 @@
 import 'package:shic/models/item.dart';
-// import 'package:intl/intl.dart';
+import 'package:intl/intl.dart';
 
-// var formatter = DateFormat('dd-MM-yyyy kk:mm');
+var formatter = DateFormat('dd/MM/yyyy kk:mm');
 
 final availableItems = [
   Item(
