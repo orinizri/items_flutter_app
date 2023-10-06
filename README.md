@@ -1,4 +1,4 @@
-# shic
+# items inventory flutter app
 
 A new Flutter project.
 
