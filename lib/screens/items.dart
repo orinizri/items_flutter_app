@@ -1,19 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:shic/models/item.dart' as item_model;
-import 'package:shic/data/items.dart';
 import 'package:shic/screens/item_details.dart';
 import 'package:shic/widgets/item.dart' as item_widget;
 
 class ItemsScreen extends StatelessWidget {
-  ItemsScreen({super.key, required this.items, this.title, required this.toggleFavorite});
+  ItemsScreen({super.key, required this.items, this.title});
 
   final List<item_model.Item> items;
   final String? title;
-  void Function(item_model.Item) toggleFavorite;
 
   void _onSelectItem(context, item) {
     Navigator.of(context)
-        .push(MaterialPageRoute(builder: (ctx) => ItemDetails(item: item, toggleFavorite: toggleFavorite,)));
+        .push(MaterialPageRoute(builder: (ctx) => ItemDetails(item: item)));
   }
 
   @override

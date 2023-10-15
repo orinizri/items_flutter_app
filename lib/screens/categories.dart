@@ -7,16 +7,16 @@ import 'package:shic/screens/items.dart';
 import 'package:shic/widgets/category_grid_item.dart';
 
 class CategoriesScreen extends StatelessWidget {
-  CategoriesScreen({super.key, required this.toggleFavorite});
+  CategoriesScreen({super.key, required this.availableItems});
 
-  void Function(Item) toggleFavorite;
-
+  final List<Item> availableItems;
+  
   void _onSelectCategory(BuildContext context, Category category) {
     final List<Item> filteredItems = availableItems
         .where((item) => item.categories.contains(category.title))
         .toList();
     Navigator.of(context).push(MaterialPageRoute(
-        builder: (ctx) => ItemsScreen(title: 'Items', items: filteredItems, toggleFavorite: toggleFavorite)));
+        builder: (ctx) => ItemsScreen(title: 'Items', items: filteredItems)));
   }
 
   @override

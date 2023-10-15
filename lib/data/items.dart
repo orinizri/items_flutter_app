@@ -58,7 +58,7 @@ final availableItems = [
     endDate: DateTime.now(),
     holderId: 1,
     borrowerId: 1,
-    active: true,
+    active: false,
   ),
   Item(
     id: 6,

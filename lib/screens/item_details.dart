@@ -1,21 +1,29 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:shic/data/items.dart';
 import 'package:shic/models/item.dart';
+import 'package:shic/providers/favorites_provider.dart';
 
-class ItemDetails extends StatelessWidget {
-  ItemDetails({super.key, required this.item, required this.toggleFavorite});
+class ItemDetails extends ConsumerWidget {
+  const ItemDetails({super.key, required this.item});
 
   final Item item;
-  void Function(Item item) toggleFavorite;
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return Scaffold(
       appBar: AppBar(
         title: Text(item.name),
         actions: [
           IconButton(
             onPressed: () {
-              toggleFavorite(item);
+              final bool itemWasAdded = ref
+                  .read(favoritesItemsProvider.notifier)
+                  .toggleItemFavorite(item);
+              ScaffoldMessenger.of(context).clearSnackBars();
+              ScaffoldMessenger.of(context).showSnackBar(
+                SnackBar(
+                    content: Text(itemWasAdded ? 'Item added' : 'Item removed')),
+              );
             },
             icon: const Icon(Icons.star),
           )
