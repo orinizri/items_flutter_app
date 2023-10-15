@@ -10,6 +10,8 @@ class ItemDetails extends ConsumerWidget {
   final Item item;
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final favoritesProvider = ref.watch(favoritesItemsProvider);
+
     return Scaffold(
       appBar: AppBar(
         title: Text(item.name),
@@ -25,7 +27,7 @@ class ItemDetails extends ConsumerWidget {
                     content: Text(itemWasAdded ? 'Item added' : 'Item removed')),
               );
             },
-            icon: const Icon(Icons.star),
+            icon: favoritesProvider.contains(item) ? const Icon(Icons.star) : const Icon(Icons.star_border_outlined),
           )
         ],
       ),

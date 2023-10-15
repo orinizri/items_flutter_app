@@ -42,16 +42,9 @@ class TabsScreenState extends ConsumerState<TabsScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final itemsConsumer = ref.watch(itemsProvider);
-    final filtersConsumer = ref.watch(filtersProvider);
-    final items = itemsConsumer.where((item) {
-      if (filtersConsumer[Filter.availableItemsFilter]! && item.active == false) {
-        return false;
-      }
-      return true;
-    }).toList();
+    final filteredItemsConsumer = ref.watch(filteredItemsProvider);
     Widget activePage = CategoriesScreen(
-      availableItems: items,
+      availableItems: filteredItemsConsumer,
     );
     var activePageTitle = 'Categories';
     if (selectedPageIndex == 1) {
